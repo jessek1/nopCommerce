@@ -26,8 +26,28 @@ namespace Nop.Services.Catalog
             
             var workContext = EngineContext.Current.Resolve<IWorkContext>();
 
-            var roundingType = workContext.WorkingCurrency.RoundingType;
+            return value.Round(workContext.WorkingCurrency.RoundingType);
+        }
 
+        /// <summary>
+        /// Round a product or order total for the currency
+        /// </summary>
+        /// <param name="value">Value to round</param>
+        /// <param name="currency">Currency</param>
+        /// <returns>Rounded value</returns>
+        public static decimal RoundPrice(decimal value, Currency currency)
+        {
+            return value.Round(currency.RoundingType);
+        }
+
+        /// <summary>
+        /// Round
+        /// </summary>
+        /// <param name="value">Value to round</param>
+        /// <param name="roundingType">The rounding type</param>
+        /// <returns>Rounded value</returns>
+        public static decimal Round(this decimal value, RoundingType roundingType)
+        {
             //default round (Rounding001)
             var rez = Math.Round(value, 2);
             decimal t;
@@ -38,13 +58,13 @@ namespace Nop.Services.Catalog
                 //rounding with 0.05 or 5 intervals
                 case RoundingType.Rounding005Up:
                 case RoundingType.Rounding005Down:
-                    t = (rez - Math.Truncate(rez))*10;
-                    t = (t - Math.Truncate(t))*10;
+                    t = (rez - Math.Truncate(rez)) * 10;
+                    t = (t - Math.Truncate(t)) * 10;
                     if (roundingType == RoundingType.Rounding005Down)
                         t = t >= 5 ? 5 - t : t * -1;
                     else
-                       t = t >= 5 ? 10 - t : 5 - t;
-                    rez += t/100;
+                        t = t >= 5 ? 10 - t : 5 - t;
+                    rez += t / 100;
                     break;
                 //rounding with 0.10 intervals
                 case RoundingType.Rounding01Up:
@@ -55,18 +75,18 @@ namespace Nop.Services.Catalog
                         t = -5;
                     else
                         t = t < 5 ? t * -1 : 10 - t;
-                        
+
                     rez += t / 100;
                     break;
                 //rounding with 0.50 intervals
                 case RoundingType.Rounding05:
                     t = (rez - Math.Truncate(rez)) * 100;
 
-                    t = t < 25 ? t*-1 : t < 50 || t < 75 ? 50 - t : 100 - t;
+                    t = t < 25 ? t * -1 : t < 50 || t < 75 ? 50 - t : 100 - t;
 
                     rez += t / 100;
                     break;
-                    case RoundingType.Rounding1:
+                case RoundingType.Rounding1:
                 //rounding with 1.00 intervals
                 case RoundingType.Rounding1Up:
                     t = (rez - Math.Truncate(rez)) * 100;
@@ -74,6 +94,9 @@ namespace Nop.Services.Catalog
                         rez = Math.Truncate(rez) + 1;
                     else
                         rez = t < 50 ? Math.Truncate(rez) : Math.Truncate(rez) + 1;
+                    break;
+                case RoundingType.Rounding001:
+                default:
                     break;
             }
 
