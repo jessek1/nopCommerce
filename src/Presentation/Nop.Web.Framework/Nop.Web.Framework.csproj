@@ -161,6 +161,7 @@
     <Compile Include="Mvc\NoTrimAttribute.cs" />
     <Compile Include="Mvc\DependencyRegistrarExtensions.cs" />
     <Compile Include="Mvc\NullJsonResult.cs" />
+    <Compile Include="Mvc\ConverterJsonResult.cs" />
     <Compile Include="Security\Captcha\CaptchaSettingsExtension.cs" />
     <Compile Include="Security\Captcha\GRecaptchaControl.cs" />
     <Compile Include="Security\Captcha\GReCaptchaResponse.cs" />

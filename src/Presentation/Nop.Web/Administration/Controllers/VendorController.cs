@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Vendors;
 using Nop.Core.Domain.Directory;
@@ -468,7 +469,7 @@ namespace Nop.Admin.Controllers
                 Total = vendorNoteModels.Count
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
         [ValidateInput(false)]

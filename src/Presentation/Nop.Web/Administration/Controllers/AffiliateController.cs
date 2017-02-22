@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Affiliates;
 using Nop.Core;
@@ -22,6 +23,7 @@ using Nop.Services.Orders;
 using Nop.Services.Security;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Kendoui;
+using Nop.Web.Framework.Mvc;
 
 namespace Nop.Admin.Controllers
 {
@@ -380,7 +382,7 @@ namespace Nop.Admin.Controllers
                 Total = orders.TotalCount
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
 

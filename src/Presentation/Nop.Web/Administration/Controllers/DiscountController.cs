@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Helpers;
 using Nop.Admin.Models.Discounts;
@@ -248,6 +249,10 @@ namespace Nop.Admin.Controllers
                 Data = discounts.PagedForCommand(command).Select(x =>
                 {
                     var discountModel = x.ToModel();
+                    if (x.StartDateUtc.HasValue)
+                        discountModel.StartDateUtc = _dateTimeHelper.ConvertToUserTime(x.StartDateUtc.Value, DateTimeKind.Utc);
+                    if (x.EndDateUtc.HasValue)
+                        discountModel.EndDateUtc = _dateTimeHelper.ConvertToUserTime(x.EndDateUtc.Value, DateTimeKind.Utc);
                     discountModel.DiscountTypeName = x.DiscountType.GetLocalizedEnum(_localizationService, _workContext);
                     discountModel.PrimaryStoreCurrencyCode = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId).CurrencyCode;
                     discountModel.TimesUsed = _discountService.GetAllDiscountUsageHistory(x.Id, pageSize: 1).TotalCount;
@@ -256,7 +261,7 @@ namespace Nop.Admin.Controllers
                 Total = discounts.Count
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
         //create
@@ -938,7 +943,7 @@ namespace Nop.Admin.Controllers
                 Total = duh.TotalCount
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
         [HttpPost]

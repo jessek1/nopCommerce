@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json.Converters;
 using Nop.Admin.Models.Tasks;
 using Nop.Core.Domain.Tasks;
 using Nop.Services.Helpers;
@@ -92,8 +93,8 @@ namespace Nop.Admin.Controllers
                 Total = models.Count
             };
 
-            return Json(gridModel);
-		}
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+        }
 
         [HttpPost]
         public virtual ActionResult TaskUpdate(ScheduleTaskModel model)

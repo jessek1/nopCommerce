@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Helpers;
 using Nop.Admin.Infrastructure.Cache;
@@ -2613,7 +2614,7 @@ namespace Nop.Admin.Controllers
                 Total = orders.TotalCount
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
         #endregion
@@ -3120,8 +3121,10 @@ namespace Nop.Admin.Controllers
                     CustomerRoleId = x.CustomerRoleId.HasValue ? x.CustomerRoleId.Value : 0,
                     Quantity = x.Quantity,
                     Price = x.Price,
-                    StartDateTimeUtc = x.StartDateTimeUtc,
-                    EndDateTimeUtc = x.EndDateTimeUtc
+                    StartDateTimeUtc = x.StartDateTimeUtc.HasValue ? 
+                        (DateTime?)_dateTimeHelper.ConvertToUserTime(x.StartDateTimeUtc.Value, DateTimeKind.Utc) : null,
+                    EndDateTimeUtc = x.EndDateTimeUtc.HasValue ? 
+                        (DateTime?)_dateTimeHelper.ConvertToUserTime(x.EndDateTimeUtc.Value, DateTimeKind.Utc) : null
                 };
             }).ToList();
 
@@ -3131,7 +3134,7 @@ namespace Nop.Admin.Controllers
                 Total = tierPricesModel.Count
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
         public virtual ActionResult TierPriceCreatePopup()
@@ -4847,7 +4850,7 @@ namespace Nop.Admin.Controllers
                 Total = stockQuantityHistory.TotalCount
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
         #endregion

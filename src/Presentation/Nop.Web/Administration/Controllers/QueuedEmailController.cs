@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Messages;
 using Nop.Core;
@@ -12,6 +13,7 @@ using Nop.Services.Messages;
 using Nop.Services.Security;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Kendoui;
+using Nop.Web.Framework.Mvc;
 
 namespace Nop.Admin.Controllers
 {
@@ -88,11 +90,9 @@ namespace Nop.Admin.Controllers
                 }),
                 Total = queuedEmails.TotalCount
             };
-			return new JsonResult
-			{
-				Data = gridModel
-			};
-		}
+
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+        }
 
         [HttpPost, ActionName("List")]
         [FormValueRequired("go-to-email-by-number")]

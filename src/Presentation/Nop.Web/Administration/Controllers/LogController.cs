@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json.Converters;
 using Nop.Admin.Models.Logging;
 using Nop.Core;
 using Nop.Core.Domain.Logging;
@@ -12,6 +13,7 @@ using Nop.Services.Logging;
 using Nop.Services.Security;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Kendoui;
+using Nop.Web.Framework.Mvc;
 
 namespace Nop.Admin.Controllers
 {
@@ -87,7 +89,7 @@ namespace Nop.Admin.Controllers
                 Total = logItems.TotalCount
             };
 
-            return Json(gridModel);
+            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
         }
 
         [HttpPost, ActionName("List")]
