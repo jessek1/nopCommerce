@@ -12,7 +12,7 @@ namespace Nop.Web.Framework.Mvc
     {
         #region Fields
 
-        private JsonConverter[] Converters;
+        private readonly JsonConverter[] _converters;
 
         #endregion
 
@@ -20,7 +20,7 @@ namespace Nop.Web.Framework.Mvc
 
         public ConverterJsonResult(params JsonConverter[] converters)
         {
-            Converters = converters;
+            _converters = converters;
         }
 
         #endregion
@@ -45,7 +45,7 @@ namespace Nop.Web.Framework.Mvc
 
             //serialize data with any converters
             if (Data != null)
-                context.HttpContext.Response.Write(JsonConvert.SerializeObject(Data, Converters));
+                context.HttpContext.Response.Write(JsonConvert.SerializeObject(Data, _converters));
         }
 
         #endregion
