@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Forums;
 using Nop.Services.Forums;
@@ -10,7 +9,6 @@ using Nop.Services.Localization;
 using Nop.Services.Security;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Kendoui;
-using Nop.Web.Framework.Mvc;
 
 namespace Nop.Admin.Controllers
 {
@@ -64,7 +62,7 @@ namespace Nop.Admin.Controllers
                 Total = forumGroups.Count
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         [HttpPost]
@@ -89,7 +87,7 @@ namespace Nop.Admin.Controllers
                 Total = forums.Count
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         #endregion

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Messages;
 using Nop.Core;
@@ -125,8 +124,8 @@ namespace Nop.Admin.Controllers
                 Total = newsletterSubscriptions.TotalCount
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
-        }
+            return Json(gridModel);
+		}
 
         [HttpPost]
         public virtual ActionResult SubscriptionUpdate([Bind(Exclude = "CreatedOn")] NewsLetterSubscriptionModel model)

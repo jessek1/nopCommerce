@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Helpers;
 using Nop.Admin.Models.Common;
@@ -831,7 +830,7 @@ namespace Nop.Admin.Controllers
                 Total = customers.TotalCount
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
         
         public virtual ActionResult Create()
@@ -1661,7 +1660,7 @@ namespace Nop.Admin.Controllers
                 Total = rewardPoints.TotalCount
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         [ValidateInput(false)]
@@ -1908,7 +1907,7 @@ namespace Nop.Admin.Controllers
             };
 
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
         
         #endregion
@@ -2192,7 +2191,7 @@ namespace Nop.Admin.Controllers
                 Total = cart.Count
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         #endregion
@@ -2224,7 +2223,7 @@ namespace Nop.Admin.Controllers
                 Total = activityLog.TotalCount
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         #endregion
@@ -2259,7 +2258,7 @@ namespace Nop.Admin.Controllers
                 Total = subscriptions.TotalCount
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         #endregion

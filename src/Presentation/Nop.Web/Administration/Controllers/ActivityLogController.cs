@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Logging;
 using Nop.Services.Helpers;
@@ -128,8 +127,7 @@ namespace Nop.Admin.Controllers
                 }),
                 Total = activityLog.TotalCount
             };
-
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         public virtual ActionResult AcivityLogDelete(int id)

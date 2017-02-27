@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Polls;
 using Nop.Core.Domain.Polls;
@@ -100,7 +99,7 @@ namespace Nop.Admin.Controllers
                 Total = polls.TotalCount
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         public virtual ActionResult Create()

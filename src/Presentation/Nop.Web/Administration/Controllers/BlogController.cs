@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Models.Blogs;
 using Nop.Core.Domain.Blogs;
@@ -175,9 +174,11 @@ namespace Nop.Admin.Controllers
                 }),
                 Total = blogPosts.TotalCount
             };
-
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
-        }
+			return new JsonResult
+			{
+				Data = gridModel
+			};
+		}
         
         public virtual ActionResult Create()
         {
@@ -385,8 +386,7 @@ namespace Nop.Admin.Controllers
                 }),
                 Total = comments.Count,
             };
-
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         [HttpPost]

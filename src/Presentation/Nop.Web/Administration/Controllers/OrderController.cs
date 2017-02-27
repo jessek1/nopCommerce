@@ -4,7 +4,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Extensions;
 using Nop.Admin.Helpers;
 using Nop.Admin.Models.Orders;
@@ -1210,8 +1209,10 @@ namespace Nop.Admin.Controllers
                 aggregatortax = _priceFormatter.FormatPrice(reportSummary.SumTax, true, false),
                 aggregatortotal = _priceFormatter.FormatPrice(reportSummary.SumOrders, true, false)
             };
-
-			return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+			return new JsonResult
+			{
+				Data = gridModel
+			};
 		}
 
         [HttpPost, ActionName("List")]
@@ -2992,9 +2993,11 @@ namespace Nop.Admin.Controllers
                 Data = shipments.Select(shipment => PrepareShipmentModel(shipment, false)),
                 Total = shipments.TotalCount
             };
-
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
-        }
+			return new JsonResult
+			{
+				Data = gridModel
+			};
+		}
 
         [HttpPost]
         public virtual ActionResult ShipmentsByOrder(int orderId, DataSourceRequest command)
@@ -3026,7 +3029,8 @@ namespace Nop.Admin.Controllers
                 Total = shipmentModels.Count
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+
+            return Json(gridModel);
         }
 
         [HttpPost]
@@ -3762,7 +3766,7 @@ namespace Nop.Admin.Controllers
                 Total = orderNoteModels.Count
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
         
         [ValidateInput(false)]

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Models.ShoppingCart;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Orders;
@@ -14,7 +13,6 @@ using Nop.Services.Security;
 using Nop.Services.Stores;
 using Nop.Services.Tax;
 using Nop.Web.Framework.Kendoui;
-using Nop.Web.Framework.Mvc;
 
 namespace Nop.Admin.Controllers
 {
@@ -128,7 +126,7 @@ namespace Nop.Admin.Controllers
                 Total = cart.Count
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
 
@@ -202,7 +200,7 @@ namespace Nop.Admin.Controllers
                 Total = cart.Count
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         #endregion

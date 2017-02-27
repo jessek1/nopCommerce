@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Newtonsoft.Json.Converters;
 using Nop.Admin.Models.Catalog;
 using Nop.Core;
 using Nop.Core.Domain.Catalog;
@@ -16,7 +15,6 @@ using Nop.Services.Security;
 using Nop.Services.Stores;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Kendoui;
-using Nop.Web.Framework.Mvc;
 
 namespace Nop.Admin.Controllers
 {
@@ -174,7 +172,7 @@ namespace Nop.Admin.Controllers
                 Total = productReviews.TotalCount
             };
 
-            return new ConverterJsonResult(new IsoDateTimeConverter()) { Data = gridModel };
+            return Json(gridModel);
         }
 
         //edit
