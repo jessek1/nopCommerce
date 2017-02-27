@@ -1602,9 +1602,9 @@ set @resources='
     <Value>Check to force customers to change their passwords after a specified time.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Currencies.Fields.RoundingType">
-    <Value>Rounding type.</Value>
+    <Value>Rounding type</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Currencies.Fields.RoundingType.Help">
+  <LocaleResource Name="Admin.Configuration.Currencies.Fields.RoundingType.Hint">
     <Value>The rounding type.</Value>
   </LocaleResource>
   <LocaleResource Name="Enums.Nop.Core.Domain.Directory.RoundingType.Rounding001">
@@ -4151,6 +4151,7 @@ SET [RoundingTypeId] = 0
 WHERE [RoundingTypeId] IS NULL
 GO
 
+-- Rounding with 1.00 intervals (The system used in Sweden since 30 September 2010. https://en.wikipedia.org/wiki/Cash_rounding#Rounding_with_1.00_intervals)
 UPDATE [Currency]
 SET [RoundingTypeId] = 6
 WHERE [CurrencyCode] = 'SEK'

@@ -4336,9 +4336,9 @@
     <Value>Exchange rate must be greater than 0.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Currencies.Fields.RoundingType">
-    <Value>Rounding type.</Value>
+    <Value>Rounding type</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Currencies.Fields.RoundingType.Help">
+  <LocaleResource Name="Admin.Configuration.Currencies.Fields.RoundingType.Hint">
     <Value>The rounding type.</Value>
   </LocaleResource>  
   <LocaleResource Name="Admin.Configuration.Currencies.GetLiveRates">
