@@ -645,7 +645,14 @@ namespace Nop.Web.Factories
                 Topics = cachedTopicModel,
                 NewProductsEnabled = _catalogSettings.NewProductsEnabled,
                 BlogEnabled = _blogSettings.Enabled,
-                ForumEnabled = _forumSettings.ForumsEnabled
+                ForumEnabled = _forumSettings.ForumsEnabled,
+                DisplayHomePageMenuItem = _catalogSettings.DisplayHomePageMenuItem,
+                DisplayNewProductsMenuItem = _catalogSettings.DisplayNewProductsMenuItem,
+                DisplayProductSearchMenuItem = _catalogSettings.DisplayProductSearchMenuItem,
+                DisplayCustomerInfoMenuItem = _catalogSettings.DisplayCustomerInfoMenuItem,
+                DisplayBlogMenuItem = _catalogSettings.DisplayBlogMenuItem,
+                DisplayBoardsMenuItem = _catalogSettings.DisplayBoardsMenuItem,
+                DisplayContactUsMenuItem = _catalogSettings.DisplayContactUsMenuItem
             };
             return model;
         }

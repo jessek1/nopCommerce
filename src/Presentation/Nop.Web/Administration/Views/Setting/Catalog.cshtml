@@ -954,6 +954,83 @@
                         </script>
                     </div>
                 </div>
+                <div class="panel panel-default advanced-setting">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.Catalog.BlockTitle.DisplayDefaultMenuItems")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.DisplayHomePageMenuItem_OverrideForStore, model => model.DisplayHomePageMenuItem, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.DisplayHomePageMenuItem)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.DisplayHomePageMenuItem)
+                                @Html.ValidationMessageFor(model => model.DisplayHomePageMenuItem)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.DisplayNewProductsMenuItem_OverrideForStore, model => model.DisplayNewProductsMenuItem, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.DisplayNewProductsMenuItem)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.DisplayNewProductsMenuItem)
+                                @Html.ValidationMessageFor(model => model.DisplayNewProductsMenuItem)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.DisplayProductSearchMenuItem_OverrideForStore, model => model.DisplayProductSearchMenuItem, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.DisplayProductSearchMenuItem)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.DisplayProductSearchMenuItem)
+                                @Html.ValidationMessageFor(model => model.DisplayProductSearchMenuItem)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.DisplayCustomerInfoMenuItem_OverrideForStore, model => model.DisplayCustomerInfoMenuItem, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.DisplayCustomerInfoMenuItem)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.DisplayCustomerInfoMenuItem)
+                                @Html.ValidationMessageFor(model => model.DisplayCustomerInfoMenuItem)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.DisplayBlogMenuItem_OverrideForStore, model => model.DisplayBlogMenuItem, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.DisplayBlogMenuItem)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.DisplayBlogMenuItem)
+                                @Html.ValidationMessageFor(model => model.DisplayBlogMenuItem)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.DisplayBoardsMenuItem_OverrideForStore, model => model.DisplayBoardsMenuItem, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.DisplayBoardsMenuItem)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.DisplayBoardsMenuItem)
+                                @Html.ValidationMessageFor(model => model.DisplayBoardsMenuItem)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.DisplayContactUsMenuItem_OverrideForStore, model => model.DisplayContactUsMenuItem, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.DisplayContactUsMenuItem)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.DisplayContactUsMenuItem)
+                                @Html.ValidationMessageFor(model => model.DisplayContactUsMenuItem)
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

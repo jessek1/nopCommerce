@@ -844,6 +844,13 @@ namespace Nop.Admin.Controllers
                 model.ShowProductReviewsOnAccountPage_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.ShowProductReviewsTabOnAccountPage, storeScope);
                 model.ProductReviewsPageSizeOnAccountPage_OverrideForStore = _settingService.SettingExists(catalogSettings, x=> x.ProductReviewsPageSizeOnAccountPage, storeScope);
                 model.ExportImportProductAttributes_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.ExportImportProductAttributes, storeScope);
+                model.DisplayHomePageMenuItem_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.DisplayHomePageMenuItem, storeScope);
+                model.DisplayNewProductsMenuItem_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.DisplayNewProductsMenuItem, storeScope);
+                model.DisplayProductSearchMenuItem_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.DisplayProductSearchMenuItem, storeScope);
+                model.DisplayCustomerInfoMenuItem_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.DisplayCustomerInfoMenuItem, storeScope);
+                model.DisplayBlogMenuItem_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.DisplayBlogMenuItem, storeScope);
+                model.DisplayBoardsMenuItem_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.DisplayBoardsMenuItem, storeScope);
+                model.DisplayContactUsMenuItem_OverrideForStore = _settingService.SettingExists(catalogSettings, x => x.DisplayContactUsMenuItem, storeScope);
             }
             return View(model);
         }
@@ -916,6 +923,14 @@ namespace Nop.Admin.Controllers
             _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.ShowProductReviewsTabOnAccountPage, model.ShowProductReviewsOnAccountPage_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.ProductReviewsPageSizeOnAccountPage, model.ProductReviewsPageSizeOnAccountPage_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.ExportImportProductAttributes, model.ExportImportProductAttributes_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.DisplayHomePageMenuItem, model.DisplayHomePageMenuItem_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.DisplayNewProductsMenuItem, model.DisplayNewProductsMenuItem_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.DisplayProductSearchMenuItem, model.DisplayProductSearchMenuItem_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.DisplayCustomerInfoMenuItem, model.DisplayCustomerInfoMenuItem_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.DisplayBlogMenuItem, model.DisplayBlogMenuItem_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.DisplayBoardsMenuItem, model.DisplayBoardsMenuItem_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(catalogSettings, x => x.DisplayContactUsMenuItem, model.DisplayContactUsMenuItem_OverrideForStore, storeScope, false);
+            
             //now settings not overridable per store
             _settingService.SaveSetting(catalogSettings, x => x.IgnoreDiscounts, 0, false);
             _settingService.SaveSetting(catalogSettings, x => x.IgnoreFeaturedProducts, 0, false);

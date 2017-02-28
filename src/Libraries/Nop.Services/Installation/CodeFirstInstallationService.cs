@@ -5823,7 +5823,7 @@ namespace Nop.Services.Installation
 
         }
 
-        protected virtual void InstallSettings()
+        protected virtual void InstallSettings(bool installSampleData)
         {
             var settingService = EngineContext.Current.Resolve<ISettingService>();
             settingService.SaveSetting(new PdfSettings
@@ -6018,7 +6018,14 @@ namespace Nop.Services.Installation
                 ShowProductReviewsTabOnAccountPage = true,
                 ProductReviewsPageSizeOnAccountPage = 10,
                 ExportImportProductAttributes = true,
-                ExportImportUseDropdownlistsForAssociatedEntities = true
+                ExportImportUseDropdownlistsForAssociatedEntities = true,
+                DisplayHomePageMenuItem = !installSampleData,
+                DisplayNewProductsMenuItem = !installSampleData,
+                DisplayProductSearchMenuItem = !installSampleData,
+                DisplayCustomerInfoMenuItem = !installSampleData,
+                DisplayBlogMenuItem = !installSampleData,
+                DisplayBoardsMenuItem = !installSampleData,
+                DisplayContactUsMenuItem = !installSampleData
             });
 
             settingService.SaveSetting(new LocalizationSettings
@@ -12179,7 +12186,7 @@ namespace Nop.Services.Installation
             InstallCustomersAndUsers(defaultUserEmail, defaultUserPassword);
             InstallEmailAccounts();
             InstallMessageTemplates();
-            InstallSettings();
+            InstallSettings(installSampleData);
             InstallTopicTemplates();
             InstallTopics();
             InstallLocaleResources();

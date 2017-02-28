@@ -237,5 +237,27 @@ namespace Nop.Admin.Models.Settings
         [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.CacheProductPrices")]
         public bool CacheProductPrices { get; set; }
 
+        [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.DisplayHomePageMenuItem")]
+        public bool DisplayHomePageMenuItem { get; set; }
+        public bool DisplayHomePageMenuItem_OverrideForStore { get; set; }
+        [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.DisplayNewProductsMenuItem")]
+        public bool DisplayNewProductsMenuItem { get; set; }
+        public bool DisplayNewProductsMenuItem_OverrideForStore { get; set; }
+        [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.DisplayProductSearchMenuItem")]
+        public bool DisplayProductSearchMenuItem { get; set; }
+        public bool DisplayProductSearchMenuItem_OverrideForStore { get; set; }
+        [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.DisplayCustomerInfoMenuItem")]
+        public bool DisplayCustomerInfoMenuItem { get; set; }
+        public bool DisplayCustomerInfoMenuItem_OverrideForStore { get; set; }
+        [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.DisplayBlogMenuItem")]
+        public bool DisplayBlogMenuItem { get; set; }
+        public bool DisplayBlogMenuItem_OverrideForStore { get; set; }
+        [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.DisplayBoardsMenuItem")]
+        public bool DisplayBoardsMenuItem { get; set; }
+        public bool DisplayBoardsMenuItem_OverrideForStore { get; set; }
+        [NopResourceDisplayName("Admin.Configuration.Settings.Catalog.DisplayContactUsMenuItem")]
+        public bool DisplayContactUsMenuItem { get; set; }
+        public bool DisplayContactUsMenuItem_OverrideForStore { get; set; }
+
     }
 }

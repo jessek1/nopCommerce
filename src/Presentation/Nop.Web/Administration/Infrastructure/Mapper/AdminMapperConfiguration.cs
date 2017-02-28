@@ -863,7 +863,14 @@ namespace Nop.Admin.Infrastructure.Mapper
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore())
                     .ForMember(dest => dest.ShowProductReviewsOnAccountPage_OverrideForStore, mo => mo.Ignore())
                     .ForMember(dest => dest.ProductReviewsPageSizeOnAccountPage_OverrideForStore, mo => mo.Ignore())
-                    .ForMember(dest => dest.ExportImportProductAttributes_OverrideForStore, mo => mo.Ignore());
+                    .ForMember(dest => dest.ExportImportProductAttributes_OverrideForStore, mo => mo.Ignore())
+                    .ForMember(dest => dest.DisplayHomePageMenuItem_OverrideForStore, mo => mo.Ignore())
+                    .ForMember(dest => dest.DisplayNewProductsMenuItem_OverrideForStore, mo => mo.Ignore())
+                    .ForMember(dest => dest.DisplayProductSearchMenuItem_OverrideForStore, mo => mo.Ignore())
+                    .ForMember(dest => dest.DisplayCustomerInfoMenuItem_OverrideForStore, mo => mo.Ignore())
+                    .ForMember(dest => dest.DisplayBlogMenuItem_OverrideForStore, mo => mo.Ignore())
+                    .ForMember(dest => dest.DisplayBoardsMenuItem_OverrideForStore, mo => mo.Ignore())
+                    .ForMember(dest => dest.DisplayContactUsMenuItem_OverrideForStore, mo => mo.Ignore());
                 cfg.CreateMap<CatalogSettingsModel, CatalogSettings>()
                     .ForMember(dest => dest.PublishBackProductWhenCancellingOrders, mo => mo.Ignore())
                     .ForMember(dest => dest.DefaultViewMode, mo => mo.Ignore())
